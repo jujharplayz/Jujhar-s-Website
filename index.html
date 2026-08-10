@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +10,8 @@
 </head>
 
 <body>
-<img class="my-kitty" id="myKitty" src="my-kitty.jpg" alt="My kitty">
-    <p id="clickCount">Kitty clicks: 0</p>
-    <section>
 
+    <section>
         <h1>Player Profile</h1>
 
         <h2>Jujharplayz</h2>
@@ -23,131 +20,106 @@
             I'm a gamer and developer learning how to build websites.
         </p>
 
-        <div class="xp-container">
+        <p>XP: 750 / 1000</p>
 
-            <div class="xp-bar">
-                <div class="xp-fill"></div>
-            </div>
-
-            <p>XP: TREE(3) / -1 </p>
-
-        </div>
-<div class="stats">
-    <div class="stat">
-        <h3>Main Title</h3>
-        <p>Lead Dev</p>
-    </div>
-
-    <div class="stat">
-        <h3>Projects</h3>
-        <p>5</p>
-    </div>
-
-    <div class="stat">
-        <h3>Level</h3>
-        <p>49</p>
-    </div>
-</div> 
-<section class="projects" id="projects">
-    <h2>My Projects</h2>
-
-    <div class="project-list">
+        <h2>Projects</h2>
 
         <div class="project">
-            <h3>Phighting Wiki</h3>
-            <p>Phighting wiki supporter.</p>
+            <h3>Project 1</h3>
+            <p>My first project.</p>
         </div>
 
         <div class="project">
-            <h3>Paper Universe</h3>
-            <p>Soundtrack Creator.</p>
+            <h3>Project 2</h3>
+            <p>My second project.</p>
         </div>
 
         <div class="project">
-            <h3>The Series</h3>
-            <p>Creator.</p>
+            <h3>Project 3</h3>
+            <p>My third project.</p>
         </div>
 
         <div class="project">
-            <h3>PYM Wiki</h3>
-            <p>PYM Wiki supporter.</p>
+            <h3>Project 4</h3>
+            <p>My fourth project.</p>
         </div>
 
         <div class="project">
-            <h3>????????</h3>
-            <p>soon.</p>
+            <h3>Project 5</h3>
+            <p>My fifth project.</p>
         </div>
 
-    </div>
-</section>
-        <a href="#projects" class="projects-button">View Projects</a>
+        <button>View Projects</button>
 
     </section>
-<audio id="clickSound" src="click.mp3"></audio>
 
-<script>
-    const kitty = document.getElementById("myKitty");
-    const sound = document.getElementById("clickSound");
-    const clickCount = document.getElementById("clickCount");
-    const buyUpgrade = document.getElementById("buyClickUpgrade");
-    const clickPowerText = document.getElementById("clickPower");
+    <img
+        class="my-kitty"
+        id="myKitty"
+        src="my-kitty.jpg"
+        alt="My kitty"
+    >
 
-    let clicks = 0;
-    let clickPower = 1;
-    let upgradeCost = 100;
+    <p id="clickCount">Kitty clicks: 0</p>
 
-    kitty.onclick = function() {
-        clicks += clickPower;
+    <div class="shop">
+        <h2>Kitty Shop</h2>
 
-        clickCount.textContent = "Kitty clicks: " + clicks;
+        <button id="buyClickUpgrade">
+            Buy +1 Click Power — 100 clicks
+        </button>
 
-        sound.currentTime = 0;
-        sound.play();
-    };
+        <p id="clickPower">Click Power: 1</p>
+    </div>
 
-    buyUpgrade.onclick = function() {
-        if (clicks >= upgradeCost) {
-            clicks -= upgradeCost;
-            clickPower += 1;
+    <img
+        class="memorial-sign"
+        id="memorialSign"
+        src="memorial-sign.jpg"
+        alt="Memorial"
+    >
+
+    <audio id="clickSound" src="click.mp3"></audio>
+    <audio id="clankSound" src="clank.mp3"></audio>
+
+    <script>
+        const kitty = document.getElementById("myKitty");
+        const sound = document.getElementById("clickSound");
+        const clickCount = document.getElementById("clickCount");
+
+        let clicks = 0;
+        let clickPower = 1;
+
+        kitty.onclick = function() {
+            clicks += clickPower;
 
             clickCount.textContent = "Kitty clicks: " + clicks;
-            clickPowerText.textContent = "Click Power: " + clickPower;
-        }
-    };
-<script>
-    
-    <div class="shop">
-    <h2>Kitty Shop</h2>
 
-    <button id="buyClickUpgrade">
-        Buy +1 Click Power — 100 clicks
-    </button>
+            sound.currentTime = 0;
+            sound.play();
+        };
 
-    <p id="clickPower">Click Power: 1</p>
-</div>
-    <img class="memorial-sign" id="memorialSign" src="memorial-sign.jpg" alt="Memorial">
+        const memorialSign = document.getElementById("memorialSign");
+        const clankSound = document.getElementById("clankSound");
 
-<audio id="clankSound" src="clank.mp3"></audio>
-<script>
-const memorialSign = document.getElementById("memorialSign");
-const clankSound = document.getElementById("clankSound");
+        memorialSign.onclick = function() {
+            clankSound.currentTime = 0;
+            clankSound.play();
 
-memorialSign.onclick = function() {
-    clankSound.currentTime = 0;
-    clankSound.play();
+            memorialSign.style.transform =
+                "translateX(-50%) rotate(5deg)";
 
-    memorialSign.style.transform = "translateX(-50%) rotate(5deg)";
+            setTimeout(function() {
+                memorialSign.style.transform =
+                    "translateX(-50%) rotate(-5deg)";
+            }, 100);
 
-    setTimeout(() => {
-        memorialSign.style.transform = "translateX(-50%) rotate(-5deg)";
-    }, 100);
-
-    setTimeout(() => {
-        memorialSign.style.transform = "translateX(-50%) rotate(0deg)";
-    }, 200);
-};
-</script>
+            setTimeout(function() {
+                memorialSign.style.transform =
+                    "translateX(-50%) rotate(0deg)";
+            }, 200);
+        };
+    </script>
 
 </body>
-
 </html>
