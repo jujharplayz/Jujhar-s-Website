@@ -12,6 +12,7 @@
 
 <body>
 <img class="my-kitty" id="myKitty" src="my-kitty.jpg" alt="My kitty">
+    <p id="clickCount">Kitty clicks: 0</p>
     <section>
 
         <h1>Player Profile</h1>
@@ -87,8 +88,15 @@
 <script>
     const kitty = document.getElementById("myKitty");
     const sound = document.getElementById("clickSound");
+    const clickCount = document.getElementById("clickCount");
+
+    let clicks = 0;
 
     kitty.onclick = function() {
+        clicks++;
+
+        clickCount.textContent = "Kitty clicks: " + clicks;
+
         sound.currentTime = 0;
         sound.play();
     };
