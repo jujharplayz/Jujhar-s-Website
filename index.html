@@ -82,7 +82,7 @@
     <audio id="clickSound" src="click.mp3"></audio>
     <audio id="clankSound" src="clank.mp3"></audio>
 
-  <script>
+<script>
     const kitty = document.getElementById("myKitty");
     const sound = document.getElementById("clickSound");
     const clickCount = document.getElementById("clickCount");
@@ -95,10 +95,9 @@
 
     let clicks = 0;
     let clickPower = 1;
-    let upgradeCost = 100;
 
     kitty.onclick = function() {
-        clicks += clickPower;
+        clicks = clicks + clickPower;
 
         clickCount.textContent = "Kitty clicks: " + clicks;
 
@@ -107,9 +106,9 @@
     };
 
     buyUpgrade.onclick = function() {
-        if (clicks >= upgradeCost) {
-            clicks -= upgradeCost;
-            clickPower += 1;
+        if (clicks >= 100) {
+            clicks = clicks - 100;
+            clickPower = clickPower + 1;
 
             clickCount.textContent = "Kitty clicks: " + clicks;
             clickPowerText.textContent = "Click Power: " + clickPower;
