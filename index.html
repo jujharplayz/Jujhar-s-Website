@@ -82,44 +82,58 @@
     <audio id="clickSound" src="click.mp3"></audio>
     <audio id="clankSound" src="clank.mp3"></audio>
 
-    <script>
-        const kitty = document.getElementById("myKitty");
-        const sound = document.getElementById("clickSound");
-        const clickCount = document.getElementById("clickCount");
+  <script>
+    const kitty = document.getElementById("myKitty");
+    const sound = document.getElementById("clickSound");
+    const clickCount = document.getElementById("clickCount");
 
-        let clicks = 0;
-        let clickPower = 1;
+    const buyUpgrade = document.getElementById("buyClickUpgrade");
+    const clickPowerText = document.getElementById("clickPower");
 
-        kitty.onclick = function() {
-            clicks += clickPower;
+    const memorialSign = document.getElementById("memorialSign");
+    const clankSound = document.getElementById("clankSound");
+
+    let clicks = 0;
+    let clickPower = 1;
+    let upgradeCost = 100;
+
+    kitty.onclick = function() {
+        clicks += clickPower;
+
+        clickCount.textContent = "Kitty clicks: " + clicks;
+
+        sound.currentTime = 0;
+        sound.play();
+    };
+
+    buyUpgrade.onclick = function() {
+        if (clicks >= upgradeCost) {
+            clicks -= upgradeCost;
+            clickPower += 1;
 
             clickCount.textContent = "Kitty clicks: " + clicks;
+            clickPowerText.textContent = "Click Power: " + clickPower;
+        }
+    };
 
-            sound.currentTime = 0;
-            sound.play();
-        };
+    memorialSign.onclick = function() {
+        clankSound.currentTime = 0;
+        clankSound.play();
 
-        const memorialSign = document.getElementById("memorialSign");
-        const clankSound = document.getElementById("clankSound");
+        memorialSign.style.transform =
+            "translateX(-50%) rotate(5deg)";
 
-        memorialSign.onclick = function() {
-            clankSound.currentTime = 0;
-            clankSound.play();
-
+        setTimeout(function() {
             memorialSign.style.transform =
-                "translateX(-50%) rotate(5deg)";
+                "translateX(-50%) rotate(-5deg)";
+        }, 100);
 
-            setTimeout(function() {
-                memorialSign.style.transform =
-                    "translateX(-50%) rotate(-5deg)";
-            }, 100);
-
-            setTimeout(function() {
-                memorialSign.style.transform =
-                    "translateX(-50%) rotate(0deg)";
-            }, 200);
-        };
-    </script>
+        setTimeout(function() {
+            memorialSign.style.transform =
+                "translateX(-50%) rotate(0deg)";
+        }, 200);
+    };
+</script>
 
 </body>
 </html>
