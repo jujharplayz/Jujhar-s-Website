@@ -89,18 +89,41 @@
     const kitty = document.getElementById("myKitty");
     const sound = document.getElementById("clickSound");
     const clickCount = document.getElementById("clickCount");
+    const buyUpgrade = document.getElementById("buyClickUpgrade");
+    const clickPowerText = document.getElementById("clickPower");
 
     let clicks = 0;
+    let clickPower = 1;
+    let upgradeCost = 100;
 
     kitty.onclick = function() {
-        clicks++;
+        clicks += clickPower;
 
         clickCount.textContent = "Kitty clicks: " + clicks;
 
         sound.currentTime = 0;
         sound.play();
     };
+
+    buyUpgrade.onclick = function() {
+        if (clicks >= upgradeCost) {
+            clicks -= upgradeCost;
+            clickPower += 1;
+
+            clickCount.textContent = "Kitty clicks: " + clicks;
+            clickPowerText.textContent = "Click Power: " + clickPower;
+        }
+    };
 </script>
+    <div class="shop">
+    <h2>Kitty Shop</h2>
+
+    <button id="buyClickUpgrade">
+        Buy +1 Click Power — 100 clicks
+    </button>
+
+    <p id="clickPower">Click Power: 1</p>
+</div>
 </body>
 
 </html>
