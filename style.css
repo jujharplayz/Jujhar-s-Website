@@ -147,3 +147,32 @@ button:hover {
     bottom: 40px;
     border-radius: 12px;
 }
+.shop {
+    margin-top: 25px;
+    padding: 20px;
+    background: #252525;
+    border: 2px solid transparent;
+    border-radius: 12px;
+}
+
+.shop h2 {
+    margin-top: 0;
+}
+
+#buyClickUpgrade {
+    padding: 10px 16px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#buyClickUpgrade:hover {
+    transform: translateY(-2px);
+}
+
+#clickPower {
+    margin-bottom: 0;
+}
