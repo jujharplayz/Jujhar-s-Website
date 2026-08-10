@@ -138,20 +138,3 @@ button:hover {
     transform: translateY(-6px);
     border-color: white;
 }
-.side-cat {
-    position: fixed;
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.left-cat {
-    left: 30px;
-}
-
-.right-cat {
-    right: 30px;
-}
