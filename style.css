@@ -125,3 +125,16 @@ button:hover {
 .projects-button:hover {
     opacity: 0.8;
 }
+.project {
+    padding: 20px;
+    background: #252525;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.project:hover {
+    transform: translateY(-6px);
+    border-color: white;
+}
