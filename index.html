@@ -82,14 +82,16 @@
         <a href="#projects" class="projects-button">View Projects</a>
 
     </section>
-<script>
-    const clickSound = document.getElementById("clickSound");
-    const kitty = document.getElementById("myKitty");
+<audio id="clickSound" src="click.mp3"></audio>
 
-    kitty.addEventListener("click", () => {
-        clickSound.currentTime = 0;
-        clickSound.play();
-    });
+<script>
+    const kitty = document.getElementById("myKitty");
+    const sound = document.getElementById("clickSound");
+
+    kitty.onclick = function() {
+        sound.currentTime = 0;
+        sound.play();
+    };
 </script>
 </body>
 
