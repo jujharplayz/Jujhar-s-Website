@@ -114,6 +114,32 @@
             clickPowerText.textContent = "Click Power: " + clickPower;
         }
     };
+<script>
+    // Your existing kitty/clicker code is here
+
+
+    // Memorial sign
+    const memorialSign = document.getElementById("memorialSign");
+    const clankSound = document.getElementById("clankSound");
+
+    memorialSign.onclick = function() {
+        clankSound.currentTime = 0;
+        clankSound.play();
+
+        memorialSign.style.transform = "translateX(-50%) rotate(5deg)";
+
+        setTimeout(() => {
+            memorialSign.style.transform = "translateX(-50%) rotate(-5deg)";
+        }, 100);
+
+        setTimeout(() => {
+            memorialSign.style.transform = "translateX(-50%) rotate(0deg)";
+        }, 200);
+    };
+</script>
+
+</body>
+</html>
 </script>
     <div class="shop">
     <h2>Kitty Shop</h2>
