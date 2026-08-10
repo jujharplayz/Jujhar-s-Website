@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<img class="my-kitty" src="my-kitty.jpg" alt="My kitty">
+<img class="my-kitty" id="myKitty" src="my-kitty.jpg" alt="My kitty">
     <section>
 
         <h1>Player Profile</h1>
@@ -82,15 +82,13 @@
         <a href="#projects" class="projects-button">View Projects</a>
 
     </section>
-<audio id="clickSound" src="click.mp3"></audio>
-    <script>
+<script>
     const clickSound = document.getElementById("clickSound");
+    const kitty = document.getElementById("myKitty");
 
-    document.querySelectorAll("button, .project").forEach(element => {
-        element.addEventListener("click", () => {
-            clickSound.currentTime = 0;
-            clickSound.play();
-        });
+    kitty.addEventListener("click", () => {
+        clickSound.currentTime = 0;
+        clickSound.play();
     });
 </script>
 </body>
