@@ -116,22 +116,44 @@
     };
 
     memorialSign.onclick = function() {
-        clankSound.currentTime = 0;
-        clankSound.play();
+    clankSound.currentTime = 0;
+    clankSound.play();
 
+    memorialSign.style.transform =
+        "translateX(-50%) rotate(5deg)";
+
+    setTimeout(function() {
         memorialSign.style.transform =
-            "translateX(-50%) rotate(5deg)";
+            "translateX(-50%) rotate(-5deg)";
+    }, 100);
 
-        setTimeout(function() {
-            memorialSign.style.transform =
-                "translateX(-50%) rotate(-5deg)";
-        }, 100);
+    setTimeout(function() {
+        memorialSign.style.transform =
+            "translateX(-50%) rotate(0deg)";
+    }, 200);
 
-        setTimeout(function() {
-            memorialSign.style.transform =
-                "translateX(-50%) rotate(0deg)";
-        }, 200);
-    };
+    const roll = Math.random();
+
+    if (roll < 0.01) {
+        clicks = clicks + 1000;
+        clickCount.textContent =
+            "KAATIE'S BLESSING! +1000 CLICKS 🪧✨";
+
+    } else if (roll < 0.10) {
+        clicks = clicks + 100;
+        clickCount.textContent =
+            "MEGA CLANK! +100 CLICKS 💥";
+
+    } else if (roll < 0.30) {
+        clicks = clicks + 25;
+        clickCount.textContent =
+            "LUCKY CLANK! +25 CLICKS 🍀";
+
+    } else {
+        clickCount.textContent =
+            "CLANK 🪧";
+    }
+};
 </script>
 
 </body>
