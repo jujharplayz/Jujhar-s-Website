@@ -176,3 +176,12 @@ button:hover {
 #clickPower {
     margin-bottom: 0;
 }
+.memorial-sign {
+    width: 120px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: transform 0.15s;
+}
