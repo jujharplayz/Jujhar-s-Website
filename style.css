@@ -82,3 +82,32 @@ button:hover {
     font-size: 24px;
     font-weight: bold;
 }
+.projects {
+    margin-top: 30px;
+}
+
+.project-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.project {
+    padding: 20px;
+    background: #252525;
+    border: 1px solid #444;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.project:hover {
+    transform: translateY(-4px);
+}
+
+.project h3 {
+    margin-top: 0;
+}
+
+.project p {
+    margin-bottom: 0;
+}
