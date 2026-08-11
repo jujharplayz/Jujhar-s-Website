@@ -20,7 +20,7 @@
             I'm a gamer and developer learning how to build websites.
         </p>
 
-        <p>XP: 750 / 1000</p>
+        <p id="xpCount">XP: 0 / 1000</p>
 
         <h2>Projects</h2>
 
@@ -95,11 +95,14 @@
 
     let clicks = 0;
     let clickPower = 1;
-
+    let xp = 0;
     kitty.onclick = function() {
         clicks = clicks + clickPower;
-
+        xp = xp + 10;
+        
         clickCount.textContent = "Kitty clicks: " + clicks;
+        document.getElementById("xpCount").textContent =
+        "XP: " + xp + " / 1000";
 
         sound.currentTime = 0;
         sound.play();
