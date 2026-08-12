@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
             I'm a gamer and developer learning how to build websites.
         </p>
 
-        <p id="xpCount">XP: 0 / 1000</p>
+        <p id="xpCount">Level 0 | XP: 0 / 1000</p>
 
         <h2>Projects</h2>
 
@@ -50,7 +51,6 @@
         </div>
 
         <button>View Projects</button>
-
     </section>
 
     <img
@@ -82,82 +82,110 @@
     <audio id="clickSound" src="click.mp3"></audio>
     <audio id="clankSound" src="clank.mp3"></audio>
 
-<script>
-    const kitty = document.getElementById("myKitty");
-    const sound = document.getElementById("clickSound");
-    const clickCount = document.getElementById("clickCount");
+    <script>
+        const kitty = document.getElementById("myKitty");
+        const sound = document.getElementById("clickSound");
+        const clickCount = document.getElementById("clickCount");
 
-    const buyUpgrade = document.getElementById("buyClickUpgrade");
-    const clickPowerText = document.getElementById("clickPower");
+        const buyUpgrade = document.getElementById("buyClickUpgrade");
+        const clickPowerText = document.getElementById("clickPower");
 
-    const memorialSign = document.getElementById("memorialSign");
-    const clankSound = document.getElementById("clankSound");
+        const xpCount = document.getElementById("xpCount");
 
-    let clicks = 0;
-    let clickPower = 1;
-    let xp = 0;
-    kitty.onclick = function() {
-        clicks = clicks + clickPower;
-        xp = xp + 10;
-        
-        clickCount.textContent = "Kitty clicks: " + clicks;
-        document.getElementById("xpCount").textContent =
-        "XP: " + xp + " / 1000";
+        const memorialSign = document.getElementById("memorialSign");
+        const clankSound = document.getElementById("clankSound");
 
-        sound.currentTime = 0;
-        sound.play();
-    };
+        let clicks = 0;
+        let clickPower = 1;
 
-    buyUpgrade.onclick = function() {
-        if (clicks >= 100) {
-            clicks = clicks - 100;
-            clickPower = clickPower + 1;
+        let xp = 0;
+        let level = 0;
+        let xpNeeded = 1000;
 
-            clickCount.textContent = "Kitty clicks: " + clicks;
-            clickPowerText.textContent = "Click Power: " + clickPower;
-        }
-    };
+        kitty.onclick = function() {
+            clicks = clicks + clickPower;
 
-    memorialSign.onclick = function() {
-    clankSound.currentTime = 0;
-    clankSound.play();
+            xp = xp + 10;
 
-    memorialSign.style.transform =
-        "translateX(-50%) rotate(5deg)";
+            if (xp >= xpNeeded) {
+                level = level + 1;
+                xpNeeded = xpNeeded * 2;
 
-    setTimeout(function() {
-        memorialSign.style.transform =
-            "translateX(-50%) rotate(-5deg)";
-    }, 100);
+                clickPower = clickPower * 2;
+            }
 
-    setTimeout(function() {
-        memorialSign.style.transform =
-            "translateX(-50%) rotate(0deg)";
-    }, 200);
+            clickCount.textContent =
+                "Kitty clicks: " + clicks;
 
-    const roll = Math.random();
+            clickPowerText.textContent =
+                "Click Power: " + clickPower;
 
-    if (roll < 0.01) {
-        clicks = clicks + 1000;
-        clickCount.textContent =
-            "KAATIE'S BLESSING! +1000 CLICKS 🪧✨";
+            xpCount.textContent =
+                "Level " + level +
+                " | XP: " + xp +
+                " / " + xpNeeded;
 
-    } else if (roll < 0.10) {
-        clicks = clicks + 100;
-        clickCount.textContent =
-            "MEGA CLANK! +100 CLICKS 💥";
+            sound.currentTime = 0;
+            sound.play();
+        };
 
-    } else if (roll < 0.30) {
-        clicks = clicks + 25;
-        clickCount.textContent =
-            "LUCKY CLANK! +25 CLICKS 🍀";
+        buyUpgrade.onclick = function() {
+            if (clicks >= 100) {
+                clicks = clicks - 100;
+                clickPower = clickPower + 1;
 
-    } else {
-        clickCount.textContent =
-            "CLANK 🪧";
-    }
-};
-</script>
+                clickCount.textContent =
+                    "Kitty clicks: " + clicks;
+
+                clickPowerText.textContent =
+                    "Click Power: " + clickPower;
+            }
+        };
+
+        memorialSign.onclick = function() {
+            clankSound.currentTime = 0;
+            clankSound.play();
+
+            memorialSign.style.transform =
+                "translateX(-50%) rotate(5deg)";
+
+            setTimeout(function() {
+                memorialSign.style.transform =
+                    "translateX(-50%) rotate(-5deg)";
+            }, 100);
+
+            setTimeout(function() {
+                memorialSign.style.transform =
+                    "translateX(-50%) rotate(0deg)";
+            }, 200);
+
+            const roll = Math.random();
+
+            if (roll < 0.01) {
+                clicks = clicks + 1000;
+
+                clickCount.textContent =
+                    "KAATIE'S BLESSING! +1000 CLICKS 🪧✨";
+
+            } else if (roll < 0.10) {
+                clicks = clicks + 100;
+
+                clickCount.textContent =
+                    "MEGA CLANK! +100 CLICKS 💥";
+
+            } else if (roll < 0.30) {
+                clicks = clicks + 25;
+
+                clickCount.textContent =
+                    "LUCKY CLANK! +25 CLICKS 🍀";
+
+            } else {
+                clickCount.textContent =
+                    "CLANK 🪧";
+            }
+        };
+    </script>
 
 </body>
 </html>
+```
